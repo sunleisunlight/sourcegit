@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Url is required!!!")]
+        [LocalizedRequired("Validate.UrlRequired")]
         [CustomValidation(typeof(ChangeSubmoduleUrl), nameof(ValidateUrl))]
         public string Url
         {
@@ -29,7 +29,7 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateUrl(string url, ValidationContext ctx)
         {
             if (!Models.Remote.IsValidURL(url))
-                return new ValidationResult("Invalid repository URL format");
+                return new ValidationResult(App.Text("Validate.InvalidRepositoryUrl"));
 
             return ValidationResult.Success;
         }

@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Branch name is required!")]
+        [LocalizedRequired("Validate.BranchNameRequired")]
         [CustomValidation(typeof(CheckoutBranchFromStash), nameof(ValidateBranchName))]
         public string BranchName
         {
@@ -30,18 +30,18 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is CheckoutBranchFromStash caller)
             {
                 if (!Models.RefName.IsValidBranchName(name))
-                    return new ValidationResult("Bad branch name format!");
+                    return new ValidationResult(App.Text("Validate.BadBranchName"));
 
                 foreach (var b in caller._repo.Branches)
                 {
                     if (b.FriendlyName.Equals(name, StringComparison.Ordinal))
-                        return new ValidationResult("A branch with same name already exists!");
+                        return new ValidationResult(App.Text("Validate.BranchAlreadyExists"));
                 }
 
                 return ValidationResult.Success;
             }
 
-            return new ValidationResult("Missing runtime context to create branch!");
+            return new ValidationResult(App.Text("Validate.MissingContextCreateBranch"));
         }
 
         public override async Task<bool> Sure()

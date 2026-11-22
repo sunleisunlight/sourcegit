@@ -12,14 +12,14 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Ignore pattern is required!")]
+        [LocalizedRequired("Validate.IgnorePatternRequired")]
         public string Pattern
         {
             get => _pattern;
             set => SetProperty(ref _pattern, value, true);
         }
 
-        [Required(ErrorMessage = "Storage file is required!!!")]
+        [LocalizedRequired("Validate.StorageFileRequired")]
         public Models.GitIgnoreFile SelectedStorageFile
         {
             get => _selectedStorageFile;

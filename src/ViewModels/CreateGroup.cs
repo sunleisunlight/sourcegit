@@ -6,7 +6,7 @@ namespace SourceGit.ViewModels
 {
     public class CreateGroup : Popup
     {
-        [Required(ErrorMessage = "Group name is required!")]
+        [LocalizedRequired("Validate.GroupNameRequired")]
         public string Name
         {
             get => _name;

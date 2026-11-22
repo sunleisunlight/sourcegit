@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
         [GeneratedRegex(@"^[\w\-/\.]+$")]
         private static partial Regex REG_TAG_PREFIX();
 
-        [Required(ErrorMessage = "Production branch name is required!!!")]
+        [LocalizedRequired("Validate.ProductionBranchRequired")]
         [CustomValidation(typeof(InitGitFlow), nameof(ValidateBaseBranch))]
         public string Production
         {
@@ -19,7 +19,7 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _production, value, true);
         }
 
-        [Required(ErrorMessage = "Development branch name is required!!!")]
+        [LocalizedRequired("Validate.DevelopmentBranchRequired")]
         [CustomValidation(typeof(InitGitFlow), nameof(ValidateBaseBranch))]
         public string Develop
         {
@@ -27,24 +27,24 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _develop, value, true);
         }
 
-        [Required(ErrorMessage = "Feature prefix is required!!!")]
-        [RegularExpression(@"^[\w\-\.]+/$", ErrorMessage = "Bad feature prefix format!")]
+        [LocalizedRequired("Validate.FeaturePrefixRequired")]
+        [LocalizedRegularExpression(@"^[\w\-\.]+/$", "Validate.BadFeaturePrefix")]
         public string FeaturePrefix
         {
             get => _featurePrefix;
             set => SetProperty(ref _featurePrefix, value, true);
         }
 
-        [Required(ErrorMessage = "Release prefix is required!!!")]
-        [RegularExpression(@"^[\w\-\.]+/$", ErrorMessage = "Bad release prefix format!")]
+        [LocalizedRequired("Validate.ReleasePrefixRequired")]
+        [LocalizedRegularExpression(@"^[\w\-\.]+/$", "Validate.BadReleasePrefix")]
         public string ReleasePrefix
         {
             get => _releasePrefix;
             set => SetProperty(ref _releasePrefix, value, true);
         }
 
-        [Required(ErrorMessage = "Hotfix prefix is required!!!")]
-        [RegularExpression(@"^[\w\-\.]+/$", ErrorMessage = "Bad hotfix prefix format!")]
+        [LocalizedRequired("Validate.HotfixPrefixRequired")]
+        [LocalizedRegularExpression(@"^[\w\-\.]+/$", "Validate.BadHotfixPrefix")]
         public string HotfixPrefix
         {
             get => _hotfixPrefix;
@@ -84,10 +84,10 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is InitGitFlow initializer)
             {
                 if (!Models.RefName.IsValidBranchName(name))
-                    return new ValidationResult("Bad branch name format!");
+                    return new ValidationResult(App.Text("Validate.BadBranchName"));
 
                 if (initializer._production == initializer._develop)
-                    return new ValidationResult("Develop branch has the same name with production branch!");
+                    return new ValidationResult(App.Text("Validate.DevelopSameAsProduction"));
             }
 
             return ValidationResult.Success;
@@ -96,7 +96,7 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateTagPrefix(string tagPrefix, ValidationContext ctx)
         {
             if (!string.IsNullOrWhiteSpace(tagPrefix) && !REG_TAG_PREFIX().IsMatch(tagPrefix))
-                return new ValidationResult("Bad tag prefix format!");
+                return new ValidationResult(App.Text("Validate.BadTagPrefix"));
 
             return ValidationResult.Success;
         }

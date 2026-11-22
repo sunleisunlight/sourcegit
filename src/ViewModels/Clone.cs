@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
 
     public class Clone : Popup
     {
-        [Required(ErrorMessage = "Remote URL is required")]
+        [LocalizedRequired("Validate.RemoteUrlRequired")]
         [CustomValidation(typeof(Clone), nameof(ValidateRemote))]
         public string Remote
         {
@@ -35,7 +35,7 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _sshKey, value);
         }
 
-        [Required(ErrorMessage = "Parent folder is required")]
+        [LocalizedRequired("Validate.ParentFolderRequired")]
         [CustomValidation(typeof(Clone), nameof(ValidateParentFolder))]
         public string ParentFolder
         {
@@ -105,14 +105,14 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateRemote(string remote, ValidationContext _)
         {
             if (!Models.Remote.IsValidURL(remote))
-                return new ValidationResult("Invalid remote repository URL format");
+                return new ValidationResult(App.Text("Validate.InvalidRemoteRepositoryUrl"));
             return ValidationResult.Success;
         }
 
         public static ValidationResult ValidateParentFolder(string folder, ValidationContext _)
         {
             if (!Directory.Exists(folder))
-                return new ValidationResult("Given path can NOT be found");
+                return new ValidationResult(App.Text("Validate.PathNotFound"));
             return ValidationResult.Success;
         }
 

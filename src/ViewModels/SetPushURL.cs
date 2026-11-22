@@ -30,7 +30,7 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is SetPushURL set)
             {
                 if (!string.IsNullOrEmpty(url) && !Models.Remote.IsValidURL(url))
-                    return new ValidationResult("Bad remote URL format!!!");
+                    return new ValidationResult(App.Text("Validate.BadRemoteUrl"));
             }
 
             return ValidationResult.Success;

@@ -1222,4 +1222,60 @@
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">移除工作树</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">解除工作树锁定</x:String>
   <x:String x:Key="Text.Yes" xml:space="preserve">好的</x:String>
+  <x:String x:Key="Text.Validate.BranchNameRequired" xml:space="preserve">分支名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.NameRequired" xml:space="preserve">名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.GroupNameRequired" xml:space="preserve">分组名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.TagNameRequired" xml:space="preserve">标签名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.UrlRequired" xml:space="preserve">URL 不能为空！</x:String>
+  <x:String x:Key="Text.Validate.RemoteNameRequired" xml:space="preserve">远程名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.RemoteUrlRequired" xml:space="preserve">远程地址不能为空！</x:String>
+  <x:String x:Key="Text.Validate.RemoteRequired" xml:space="preserve">请选择远程！</x:String>
+  <x:String x:Key="Text.Validate.RemoteBranchRequired" xml:space="preserve">远程分支不能为空！</x:String>
+  <x:String x:Key="Text.Validate.PullRemoteBranchRequired" xml:space="preserve">请选择要拉取的远程分支！</x:String>
+  <x:String x:Key="Text.Validate.LocalBranchRequired" xml:space="preserve">本地分支不能为空！</x:String>
+  <x:String x:Key="Text.Validate.PathRequired" xml:space="preserve">路径不能为空！</x:String>
+  <x:String x:Key="Text.Validate.ParentFolderRequired" xml:space="preserve">上级目录不能为空！</x:String>
+  <x:String x:Key="Text.Validate.RepositoryFolderRequired" xml:space="preserve">仓库目录不能为空！</x:String>
+  <x:String x:Key="Text.Validate.OutputFileNameRequired" xml:space="preserve">输出文件名不能为空！</x:String>
+  <x:String x:Key="Text.Validate.StorageFileRequired" xml:space="preserve">存储文件不能为空！</x:String>
+  <x:String x:Key="Text.Validate.IgnorePatternRequired" xml:space="preserve">忽略规则不能为空！</x:String>
+  <x:String x:Key="Text.Validate.LfsPatternRequired" xml:space="preserve">LFS 追踪规则不能为空！</x:String>
+  <x:String x:Key="Text.Validate.EmailRequired" xml:space="preserve">邮箱不能为空！</x:String>
+  <x:String x:Key="Text.Validate.InvalidEmail" xml:space="preserve">邮箱格式不正确。</x:String>
+  <x:String x:Key="Text.Validate.NameInvalidChars" xml:space="preserve">名称只能包含字母、数字、下划线和半角连字符。</x:String>
+  <x:String x:Key="Text.Validate.ConventionalTypeRequired" xml:space="preserve">请选择变更类型。</x:String>
+  <x:String x:Key="Text.Validate.ConventionalShortDescRequired" xml:space="preserve">简短描述不能为空。</x:String>
+  <x:String x:Key="Text.Validate.ProductionBranchRequired" xml:space="preserve">生产分支名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.DevelopmentBranchRequired" xml:space="preserve">开发分支名称不能为空！</x:String>
+  <x:String x:Key="Text.Validate.FeaturePrefixRequired" xml:space="preserve">功能分支前缀不能为空！</x:String>
+  <x:String x:Key="Text.Validate.ReleasePrefixRequired" xml:space="preserve">发布分支前缀不能为空！</x:String>
+  <x:String x:Key="Text.Validate.HotfixPrefixRequired" xml:space="preserve">热修复分支前缀不能为空！</x:String>
+  <x:String x:Key="Text.Validate.BadFeaturePrefix" xml:space="preserve">功能分支前缀格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadReleasePrefix" xml:space="preserve">发布分支前缀格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadHotfixPrefix" xml:space="preserve">热修复分支前缀格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadBranchName" xml:space="preserve">分支名称格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadTagName" xml:space="preserve">标签名称格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadRemoteName" xml:space="preserve">远程名称格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadRemoteUrl" xml:space="preserve">远程地址格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BadTagPrefix" xml:space="preserve">标签前缀格式不正确！</x:String>
+  <x:String x:Key="Text.Validate.BranchAlreadyExists" xml:space="preserve">已经存在同名分支！</x:String>
+  <x:String x:Key="Text.Validate.TagAlreadyExists" xml:space="preserve">已经存在同名标签！</x:String>
+  <x:String x:Key="Text.Validate.RemoteNameExists" xml:space="preserve">已经存在同名远程！</x:String>
+  <x:String x:Key="Text.Validate.RemoteUrlExists" xml:space="preserve">已经存在相同地址的远程！</x:String>
+  <x:String x:Key="Text.Validate.SshKeyNotFound" xml:space="preserve">找不到指定的 SSH 私钥文件！</x:String>
+  <x:String x:Key="Text.Validate.InvalidRepositoryUrl" xml:space="preserve">仓库地址格式不正确。</x:String>
+  <x:String x:Key="Text.Validate.InvalidRemoteRepositoryUrl" xml:space="preserve">远程仓库地址格式不正确。</x:String>
+  <x:String x:Key="Text.Validate.PathNotFound" xml:space="preserve">找不到指定的路径！</x:String>
+  <x:String x:Key="Text.Validate.PathNotEmpty" xml:space="preserve">指定的路径不是空目录！</x:String>
+  <x:String x:Key="Text.Validate.WorktreePathRequired" xml:space="preserve">工作树路径不能为空！</x:String>
+  <x:String x:Key="Text.Validate.MissingContextCreateBranch" xml:space="preserve">缺少创建分支所需的上下文！</x:String>
+  <x:String x:Key="Text.Validate.MissingContextAddWorktree" xml:space="preserve">缺少添加工作树所需的上下文！</x:String>
+  <x:String x:Key="Text.Validate.MissingContextCheckoutWorktree" xml:space="preserve">缺少以工作树方式检出分支所需的上下文！</x:String>
+  <x:String x:Key="Text.Validate.PassphraseRequired" xml:space="preserve">口令不能为空！</x:String>
+  <x:String x:Key="Text.Validate.PassphraseInvalidChars" xml:space="preserve">口令只能包含字母、数字和这些特殊字符：_ + - = @ # $ % ! &amp;</x:String>
+  <x:String x:Key="Text.Validate.PassphraseMismatch" xml:space="preserve">两次输入的口令不一致！</x:String>
+  <x:String x:Key="Text.Validate.DevelopSameAsProduction" xml:space="preserve">开发分支不能与生产分支同名！</x:String>
+  <x:String x:Key="Text.Validate.InvalidObjectInstance" xml:space="preserve">对象实例无效！</x:String>
+  <x:String x:Key="Text.Validate.PleaseSelectPatchFile" xml:space="preserve">请选择补丁文件！</x:String>
+  <x:String x:Key="Text.Validate.SshKeyGenerateFailed" xml:space="preserve">生成 SSH 密钥失败：找不到密钥文件。</x:String>
 </ResourceDictionary>

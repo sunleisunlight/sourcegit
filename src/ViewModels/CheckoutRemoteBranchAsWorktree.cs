@@ -44,10 +44,10 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateWorktreePath(string path, ValidationContext ctx)
         {
             if (ctx.ObjectInstance is not CheckoutRemoteBranchAsWorktree creator)
-                return new ValidationResult("Missing runtime context to checkout branch as worktree!");
+                return new ValidationResult(App.Text("Validate.MissingContextCheckoutWorktree"));
 
             if (string.IsNullOrEmpty(path))
-                return new ValidationResult("Worktree path is required!");
+                return new ValidationResult(App.Text("Validate.WorktreePathRequired"));
 
             var fullPath = Path.IsPathRooted(path) ? path : Path.Combine(creator._repo.FullPath, path);
             var info = new DirectoryInfo(fullPath);
@@ -55,11 +55,11 @@ namespace SourceGit.ViewModels
             {
                 var files = info.GetFiles();
                 if (files.Length > 0)
-                    return new ValidationResult("Given path is not empty!!!");
+                    return new ValidationResult(App.Text("Validate.PathNotEmpty"));
 
                 var folders = info.GetDirectories();
                 if (folders.Length > 0)
-                    return new ValidationResult("Given path is not empty!!!");
+                    return new ValidationResult(App.Text("Validate.PathNotEmpty"));
             }
 
             return ValidationResult.Success;
@@ -68,7 +68,7 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateBranchName(string name, ValidationContext ctx)
         {
             if (ctx.ObjectInstance is not CheckoutRemoteBranchAsWorktree creator)
-                return new ValidationResult("Missing runtime context to checkout branch as worktree!");
+                return new ValidationResult(App.Text("Validate.MissingContextCheckoutWorktree"));
 
             var test = !string.IsNullOrEmpty(name) ? name : Path.GetFileName(creator._worktreePath.TrimEnd('/').TrimEnd('\\'));
             if (!Models.RefName.IsValidBranchName(test))

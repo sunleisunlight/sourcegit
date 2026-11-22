@@ -769,4 +769,60 @@
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">நீக்கு</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">திற</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">தரவு நிரலில் கோப்பு மாற்றங்களின் புள்ளிவிவரங்களைக் காட்டு</x:String>
+  <x:String x:Key="Text.Validate.BranchNameRequired" xml:space="preserve">Branch name is required!</x:String>
+  <x:String x:Key="Text.Validate.NameRequired" xml:space="preserve">Name is required!</x:String>
+  <x:String x:Key="Text.Validate.GroupNameRequired" xml:space="preserve">Group name is required!</x:String>
+  <x:String x:Key="Text.Validate.TagNameRequired" xml:space="preserve">Tag name is required!</x:String>
+  <x:String x:Key="Text.Validate.UrlRequired" xml:space="preserve">Url is required!</x:String>
+  <x:String x:Key="Text.Validate.RemoteNameRequired" xml:space="preserve">Remote name is required!</x:String>
+  <x:String x:Key="Text.Validate.RemoteUrlRequired" xml:space="preserve">Remote URL is required!</x:String>
+  <x:String x:Key="Text.Validate.RemoteRequired" xml:space="preserve">Remote is required!</x:String>
+  <x:String x:Key="Text.Validate.RemoteBranchRequired" xml:space="preserve">Remote branch is required!</x:String>
+  <x:String x:Key="Text.Validate.PullRemoteBranchRequired" xml:space="preserve">Remote branch to pull is required!</x:String>
+  <x:String x:Key="Text.Validate.LocalBranchRequired" xml:space="preserve">Local branch is required!</x:String>
+  <x:String x:Key="Text.Validate.PathRequired" xml:space="preserve">Path is required!</x:String>
+  <x:String x:Key="Text.Validate.ParentFolderRequired" xml:space="preserve">Parent folder is required</x:String>
+  <x:String x:Key="Text.Validate.RepositoryFolderRequired" xml:space="preserve">Repository folder is required</x:String>
+  <x:String x:Key="Text.Validate.OutputFileNameRequired" xml:space="preserve">Output file name is required</x:String>
+  <x:String x:Key="Text.Validate.StorageFileRequired" xml:space="preserve">Storage file is required!</x:String>
+  <x:String x:Key="Text.Validate.IgnorePatternRequired" xml:space="preserve">Ignore pattern is required!</x:String>
+  <x:String x:Key="Text.Validate.LfsPatternRequired" xml:space="preserve">LFS track pattern is required!</x:String>
+  <x:String x:Key="Text.Validate.EmailRequired" xml:space="preserve">Email is required.</x:String>
+  <x:String x:Key="Text.Validate.InvalidEmail" xml:space="preserve">Invalid email address.</x:String>
+  <x:String x:Key="Text.Validate.NameInvalidChars" xml:space="preserve">Name can only contain letters, numbers, underscores, and hyphens.</x:String>
+  <x:String x:Key="Text.Validate.ConventionalTypeRequired" xml:space="preserve">Type of changes can not be null</x:String>
+  <x:String x:Key="Text.Validate.ConventionalShortDescRequired" xml:space="preserve">Short description can not be empty</x:String>
+  <x:String x:Key="Text.Validate.ProductionBranchRequired" xml:space="preserve">Production branch name is required!</x:String>
+  <x:String x:Key="Text.Validate.DevelopmentBranchRequired" xml:space="preserve">Development branch name is required!</x:String>
+  <x:String x:Key="Text.Validate.FeaturePrefixRequired" xml:space="preserve">Feature prefix is required!</x:String>
+  <x:String x:Key="Text.Validate.ReleasePrefixRequired" xml:space="preserve">Release prefix is required!</x:String>
+  <x:String x:Key="Text.Validate.HotfixPrefixRequired" xml:space="preserve">Hotfix prefix is required!</x:String>
+  <x:String x:Key="Text.Validate.BadFeaturePrefix" xml:space="preserve">Bad feature prefix format!</x:String>
+  <x:String x:Key="Text.Validate.BadReleasePrefix" xml:space="preserve">Bad release prefix format!</x:String>
+  <x:String x:Key="Text.Validate.BadHotfixPrefix" xml:space="preserve">Bad hotfix prefix format!</x:String>
+  <x:String x:Key="Text.Validate.BadBranchName" xml:space="preserve">Bad branch name format!</x:String>
+  <x:String x:Key="Text.Validate.BadTagName" xml:space="preserve">Bad tag name format!</x:String>
+  <x:String x:Key="Text.Validate.BadRemoteName" xml:space="preserve">Bad remote name format!</x:String>
+  <x:String x:Key="Text.Validate.BadRemoteUrl" xml:space="preserve">Bad remote URL format!</x:String>
+  <x:String x:Key="Text.Validate.BadTagPrefix" xml:space="preserve">Bad tag prefix format!</x:String>
+  <x:String x:Key="Text.Validate.BranchAlreadyExists" xml:space="preserve">A branch with same name already exists!</x:String>
+  <x:String x:Key="Text.Validate.TagAlreadyExists" xml:space="preserve">A tag with same name already exists!</x:String>
+  <x:String x:Key="Text.Validate.RemoteNameExists" xml:space="preserve">A remote with given name already exists!</x:String>
+  <x:String x:Key="Text.Validate.RemoteUrlExists" xml:space="preserve">A remote with the same url already exists!</x:String>
+  <x:String x:Key="Text.Validate.SshKeyNotFound" xml:space="preserve">Given SSH private key can NOT be found!</x:String>
+  <x:String x:Key="Text.Validate.InvalidRepositoryUrl" xml:space="preserve">Invalid repository URL format</x:String>
+  <x:String x:Key="Text.Validate.InvalidRemoteRepositoryUrl" xml:space="preserve">Invalid remote repository URL format</x:String>
+  <x:String x:Key="Text.Validate.PathNotFound" xml:space="preserve">Given path can NOT be found</x:String>
+  <x:String x:Key="Text.Validate.PathNotEmpty" xml:space="preserve">Given path is not empty!</x:String>
+  <x:String x:Key="Text.Validate.WorktreePathRequired" xml:space="preserve">Worktree path is required!</x:String>
+  <x:String x:Key="Text.Validate.MissingContextCreateBranch" xml:space="preserve">Missing runtime context to create branch!</x:String>
+  <x:String x:Key="Text.Validate.MissingContextAddWorktree" xml:space="preserve">Missing runtime context to add worktree!</x:String>
+  <x:String x:Key="Text.Validate.MissingContextCheckoutWorktree" xml:space="preserve">Missing runtime context to checkout branch as worktree!</x:String>
+  <x:String x:Key="Text.Validate.PassphraseRequired" xml:space="preserve">Passphrase is required!</x:String>
+  <x:String x:Key="Text.Validate.PassphraseInvalidChars" xml:space="preserve">Passphrase can only contain letters, numbers, and special characters: _ + - = @ # $ % ! &amp;</x:String>
+  <x:String x:Key="Text.Validate.PassphraseMismatch" xml:space="preserve">Passphrase and confirmation do not match!</x:String>
+  <x:String x:Key="Text.Validate.DevelopSameAsProduction" xml:space="preserve">Develop branch has the same name with production branch!</x:String>
+  <x:String x:Key="Text.Validate.InvalidObjectInstance" xml:space="preserve">Invalid object instance!</x:String>
+  <x:String x:Key="Text.Validate.PleaseSelectPatchFile" xml:space="preserve">Please select a patch file!</x:String>
+  <x:String x:Key="Text.Validate.SshKeyGenerateFailed" xml:space="preserve">Failed to generate SSH key: Key files not found.</x:String>
 </ResourceDictionary>

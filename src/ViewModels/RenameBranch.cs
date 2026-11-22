@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Branch name is required!!!")]
+        [LocalizedRequired("Validate.BranchNameRequired")]
         [CustomValidation(typeof(RenameBranch), nameof(ValidateBranchName))]
         public string Name
         {
@@ -31,12 +31,12 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is RenameBranch rename)
             {
                 if (!Models.RefName.IsValidBranchName(name))
-                    return new ValidationResult("Bad branch name format!");
+                    return new ValidationResult(App.Text("Validate.BadBranchName"));
 
                 foreach (var b in rename._repo.Branches)
                 {
                     if (b.IsLocal && b != rename.Target && b.Name.Equals(name, StringComparison.Ordinal))
-                        return new ValidationResult("A branch with same name already exists!!!");
+                        return new ValidationResult(App.Text("Validate.BranchAlreadyExists"));
                 }
             }
 

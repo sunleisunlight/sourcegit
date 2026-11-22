@@ -6,7 +6,7 @@ namespace SourceGit.ViewModels
 {
     public class CreateBranch : Popup
     {
-        [Required(ErrorMessage = "Branch name is required!")]
+        [LocalizedRequired("Validate.BranchNameRequired")]
         [CustomValidation(typeof(CreateBranch), nameof(ValidateBranchName))]
         public string Name
         {
@@ -115,21 +115,21 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is CreateBranch creator)
             {
                 if (!Models.RefName.IsValidBranchName(name))
-                    return new ValidationResult("Bad branch name format!");
+                    return new ValidationResult(App.Text("Validate.BadBranchName"));
 
                 if (!creator._allowOverwrite)
                 {
                     foreach (var b in creator._repo.Branches)
                     {
                         if (b.FriendlyName.Equals(name, StringComparison.Ordinal))
-                            return new ValidationResult("A branch with same name already exists!");
+                            return new ValidationResult(App.Text("Validate.BranchAlreadyExists"));
                     }
                 }
 
                 return ValidationResult.Success;
             }
 
-            return new ValidationResult("Missing runtime context to create branch!");
+            return new ValidationResult(App.Text("Validate.MissingContextCreateBranch"));
         }
 
         public override async Task<bool> Sure()

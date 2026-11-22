@@ -68,7 +68,7 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidatePatchFile(string file, ValidationContext ctx)
         {
             if (ctx.ObjectInstance is not Apply apply)
-                return new ValidationResult("Invalid object instance!!!");
+                return new ValidationResult(App.Text("Validate.InvalidObjectInstance"));
 
             if (apply.FromClipboard)
             {
@@ -79,7 +79,7 @@ namespace SourceGit.ViewModels
             if (string.IsNullOrEmpty(file))
             {
                 apply.CanCreateCommit = false;
-                return new ValidationResult("Please select a patch file!!!");
+                return new ValidationResult(App.Text("Validate.PleaseSelectPatchFile"));
             }
 
             if (!File.Exists(file))

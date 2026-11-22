@@ -11,7 +11,7 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Path is required!!!")]
+        [LocalizedRequired("Validate.PathRequired")]
         public string MoveTo
         {
             get => _moveTo;

@@ -16,16 +16,16 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _type, value);
         }
 
-        [Required(ErrorMessage = "Name is required.")]
-        [RegularExpression(@"^[a-zA-Z0-9_\-]+$", ErrorMessage = "Name can only contain letters, numbers, underscores, and hyphens.")]
+        [LocalizedRequired("Validate.NameRequired")]
+        [LocalizedRegularExpression(@"^[a-zA-Z0-9_\-]+$", "Validate.NameInvalidChars")]
         public string Name
         {
             get => _name;
             set => SetProperty(ref _name, value, true);
         }
 
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email address.")]
+        [LocalizedRequired("Validate.EmailRequired")]
+        [LocalizedEmailAddress("Validate.InvalidEmail")]
         public string Email
         {
             get => _email;
@@ -76,10 +76,10 @@ namespace SourceGit.ViewModels
                 return ValidationResult.Success;
 
             if (string.IsNullOrEmpty(password))
-                return new ValidationResult("Passphrase is required!");
+                return new ValidationResult(App.Text("Validate.PassphraseRequired"));
 
             if (!REG_PSWD_FORMAT().IsMatch(password))
-                return new ValidationResult("Passphrase can only contain letters, numbers, and special characters: _ + - = @ # $ % ! &");
+                return new ValidationResult(App.Text("Validate.PassphraseInvalidChars"));
 
             return ValidationResult.Success;
         }
@@ -91,7 +91,7 @@ namespace SourceGit.ViewModels
                 return ValidationResult.Success;
 
             if (confirmedPassword != instance.Passphrase)
-                return new ValidationResult("Passphrase and confirmation do not match!");
+                return new ValidationResult(App.Text("Validate.PassphraseMismatch"));
 
             return ValidationResult.Success;
         }
@@ -143,7 +143,7 @@ namespace SourceGit.ViewModels
             if (File.Exists(keyFile) && File.Exists(publicKeyFile))
                 return new Models.SSHKeyPair(keyFile, publicKeyFile);
 
-            ErrorMessage = "Failed to generate SSH key: Key files not found.";
+            ErrorMessage = App.Text("Validate.SshKeyGenerateFailed");
             return null;
         }
 

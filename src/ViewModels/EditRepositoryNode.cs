@@ -15,7 +15,7 @@ namespace SourceGit.ViewModels
             get;
         }
 
-        [Required(ErrorMessage = "Name is required!")]
+        [LocalizedRequired("Validate.NameRequired")]
         public string Name
         {
             get => _name;

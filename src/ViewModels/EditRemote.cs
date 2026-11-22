@@ -6,8 +6,8 @@ namespace SourceGit.ViewModels
 {
     public class EditRemote : Popup
     {
-        [Required(ErrorMessage = "Remote name is required!!!")]
-        [RegularExpression(@"^[\w\-\.]+$", ErrorMessage = "Bad remote name format!!!")]
+        [LocalizedRequired("Validate.RemoteNameRequired")]
+        [LocalizedRegularExpression(@"^[\w\-\.]+$", "Validate.BadRemoteName")]
         [CustomValidation(typeof(EditRemote), nameof(ValidateRemoteName))]
         public string Name
         {
@@ -15,7 +15,7 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _name, value, true);
         }
 
-        [Required(ErrorMessage = "Remote URL is required!!!")]
+        [LocalizedRequired("Validate.RemoteUrlRequired")]
         [CustomValidation(typeof(EditRemote), nameof(ValidateRemoteURL))]
         public string Url
         {
@@ -73,7 +73,7 @@ namespace SourceGit.ViewModels
                 foreach (var remote in edit._repo.Remotes)
                 {
                     if (remote != edit._remote && name == remote.Name)
-                        return new ValidationResult("A remote with given name already exists!!!");
+                        return new ValidationResult(App.Text("Validate.RemoteNameExists"));
                 }
             }
 
@@ -85,12 +85,12 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is EditRemote edit)
             {
                 if (!Models.Remote.IsValidURL(url))
-                    return new ValidationResult("Bad remote URL format!!!");
+                    return new ValidationResult(App.Text("Validate.BadRemoteUrl"));
 
                 foreach (var remote in edit._repo.Remotes)
                 {
                     if (remote != edit._remote && url == remote.URL)
-                        return new ValidationResult("A remote with the same url already exists!!!");
+                        return new ValidationResult(App.Text("Validate.RemoteUrlExists"));
                 }
             }
 
@@ -102,7 +102,7 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is EditRemote { _useSSH: true } && !string.IsNullOrEmpty(sshkey))
             {
                 if (!File.Exists(sshkey))
-                    return new ValidationResult("Given SSH private key can NOT be found!");
+                    return new ValidationResult(App.Text("Validate.SshKeyNotFound"));
             }
 
             return ValidationResult.Success;

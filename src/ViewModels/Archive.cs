@@ -7,7 +7,7 @@ namespace SourceGit.ViewModels
 {
     public class Archive : Popup
     {
-        [Required(ErrorMessage = "Output file name is required")]
+        [LocalizedRequired("Validate.OutputFileNameRequired")]
         public string SaveFile
         {
             get => _saveFile;

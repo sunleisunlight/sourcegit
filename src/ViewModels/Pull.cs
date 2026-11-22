@@ -33,7 +33,7 @@ namespace SourceGit.ViewModels
             private set => SetProperty(ref _remoteBranches, value);
         }
 
-        [Required(ErrorMessage = "Remote branch to pull is required!!!")]
+        [LocalizedRequired("Validate.PullRemoteBranchRequired")]
         public Models.Branch SelectedBranch
         {
             get => _selectedBranch;

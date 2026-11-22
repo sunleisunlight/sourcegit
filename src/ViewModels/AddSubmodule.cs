@@ -7,7 +7,7 @@ namespace SourceGit.ViewModels
 {
     public class AddSubmodule : Popup
     {
-        [Required(ErrorMessage = "Url is required!!!")]
+        [LocalizedRequired("Validate.UrlRequired")]
         [CustomValidation(typeof(AddSubmodule), nameof(ValidateURL))]
         public string Url
         {
@@ -35,7 +35,7 @@ namespace SourceGit.ViewModels
         public static ValidationResult ValidateURL(string url, ValidationContext ctx)
         {
             if (!Models.Remote.IsValidURL(url))
-                return new ValidationResult("Invalid repository URL format");
+                return new ValidationResult(App.Text("Validate.InvalidRepositoryUrl"));
 
             return ValidationResult.Success;
         }

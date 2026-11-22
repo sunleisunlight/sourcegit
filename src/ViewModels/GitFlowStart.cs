@@ -31,7 +31,7 @@ namespace SourceGit.ViewModels
             private set;
         }
 
-        [Required(ErrorMessage = "Name is required!!!")]
+        [LocalizedRequired("Validate.NameRequired")]
         [CustomValidation(typeof(GitFlowStart), nameof(ValidateBranchName))]
         public string Name
         {
@@ -67,13 +67,13 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is GitFlowStart starter)
             {
                 if (!Models.RefName.IsValidBranchName($"{starter.Prefix}{name}"))
-                    return new ValidationResult("Bad branch name format!");
+                    return new ValidationResult(App.Text("Validate.BadBranchName"));
 
                 var check = $"{starter.Prefix}{name}";
                 foreach (var b in starter._repo.Branches)
                 {
                     if (b.FriendlyName == check)
-                        return new ValidationResult("A branch with same name already exists!");
+                        return new ValidationResult(App.Text("Validate.BranchAlreadyExists"));
                 }
             }
 

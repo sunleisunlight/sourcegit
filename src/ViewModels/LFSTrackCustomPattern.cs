@@ -5,7 +5,7 @@ namespace SourceGit.ViewModels
 {
     public class LFSTrackCustomPattern : Popup
     {
-        [Required(ErrorMessage = "LFS track pattern is required!!!")]
+        [LocalizedRequired("Validate.LfsPatternRequired")]
         public string Pattern
         {
             get => _pattern;

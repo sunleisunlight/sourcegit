@@ -12,7 +12,7 @@ namespace SourceGit.ViewModels
             private set;
         }
 
-        [Required(ErrorMessage = "Tag name is required!")]
+        [LocalizedRequired("Validate.TagNameRequired")]
         [CustomValidation(typeof(CreateTag), nameof(ValidateTagName))]
         public string TagName
         {
@@ -74,11 +74,11 @@ namespace SourceGit.ViewModels
             if (ctx.ObjectInstance is CreateTag creator)
             {
                 if (!Models.RefName.IsValidTagName(name))
-                    return new ValidationResult("Bad tag name format!");
+                    return new ValidationResult(App.Text("Validate.BadTagName"));
 
                 var found = creator._repo.Tags.Find(x => x.Name == name);
                 if (found != null)
-                    return new ValidationResult("A tag with same name already exists!");
+                    return new ValidationResult(App.Text("Validate.TagAlreadyExists"));
             }
             return ValidationResult.Success;
         }
