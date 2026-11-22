@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Avalonia;
 using Avalonia.Collections;
+using Avalonia.Media;
 using Avalonia.Controls;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -124,6 +127,15 @@ namespace SourceGit.ViewModels
             }
         }
 
+        /// <summary>
+        ///     The `changes` column is auto-sized by its content, so that numbers like `+2199 -8` are never truncated.
+        /// </summary>
+        public double ChangesStatColumnMinWidth
+        {
+            get => _changesStatColumnMinWidth;
+            private set => SetProperty(ref _changesStatColumnMinWidth, value);
+        }
+
         public List<Models.Commit> Commits
         {
             get => _commits;
@@ -131,7 +143,11 @@ namespace SourceGit.ViewModels
             {
                 GenerateGraph(value);
                 if (SetProperty(ref _commits, value))
+                {
+                    _widestStatTextLength = 0;
+                    ChangesStatColumnMinWidth = DefaultChangesStatColumnWidth;
                     PostCommitsChanged();
+                }
             }
         }
 
@@ -537,6 +553,8 @@ namespace SourceGit.ViewModels
                     {
                         foreach (var (commit, files, insertions, deletions) in batch)
                             commit.SetChangesStat(files, insertions, deletions);
+
+                        UpdateChangesStatColumnWidth(batch);
                     });
                 }
 
@@ -554,6 +572,67 @@ namespace SourceGit.ViewModels
 
                 Flush();
             }, token);
+        }
+
+        private void UpdateChangesStatColumnWidth((Models.Commit Commit, int Files, int Insertions, int Deletions)[] batch)
+        {
+            var unit = App.Text("Histories.Changes.Unit");
+            var fontSize = Preferences.Instance.DefaultFontSize;
+            var width = _changesStatColumnMinWidth;
+
+            foreach (var (commit, _, _, _) in batch)
+            {
+                if (!commit.HasChangesStat)
+                    continue;
+
+                var text = $"{commit.ChangesCount} {unit}   {commit.InsertionsText} {commit.DeletionsText}";
+                if (text.Length < _widestStatTextLength)
+                    continue;
+
+                _widestStatTextLength = text.Length;
+
+                var desired = MeasureStatWidth(text, fontSize);
+                if (desired > width)
+                    width = desired;
+            }
+
+            width = Math.Clamp(width, DefaultChangesStatColumnWidth, MaxChangesStatColumnWidth);
+            if (width > _changesStatColumnMinWidth)
+                ChangesStatColumnMinWidth = width;
+        }
+
+        /// <summary>
+        ///     Measure the width of a single statistics text with the font used by the commit list.
+        /// </summary>
+        private static double MeasureStatWidth(string text, double fontSize)
+        {
+            try
+            {
+                // Use exactly the same font family as the commit list (`Fonts.Default`) does.
+                var family = App.Current?.FindResource("Fonts.Default") as FontFamily;
+                if (family == null)
+                {
+                    var name = Preferences.Instance.DefaultFontFamily;
+                    family = string.IsNullOrWhiteSpace(name) ? FontFamily.Default : new FontFamily(name);
+                }
+
+                var typeface = new Typeface(family);
+                var formatted = new FormattedText(
+                    text,
+                    CultureInfo.CurrentCulture,
+                    FlowDirection.LeftToRight,
+                    typeface,
+                    fontSize,
+                    Brushes.Black);
+
+                // The leading number is bold and the cell has paddings, so add a little margin here.
+                return Math.Ceiling(formatted.Width * 1.06) + 24;
+            }
+            catch
+            {
+                // Never let the measurement break the history list.
+                return (text.Length * fontSize * 0.62) + 24;
+            }
         }
 
         private void PostCommitsChanged()
@@ -645,6 +724,8 @@ namespace SourceGit.ViewModels
         }
 
         private const int MaxCommitsWithChangesStat = 5000;
+        private const double DefaultChangesStatColumnWidth = 96;
+        private const double MaxChangesStatColumnWidth = 480;
 
         private Repository _repo = null;
         private Models.Branch _currentBranch = null;
@@ -666,5 +747,7 @@ namespace SourceGit.ViewModels
         private GridLength _topArea = new(1, GridUnitType.Star);
         private GridLength _bottomArea = new(1, GridUnitType.Star);
         private bool _isCollapseDetails = false;
+        private double _changesStatColumnMinWidth = DefaultChangesStatColumnWidth;
+        private int _widestStatTextLength = 0;
     }
 }

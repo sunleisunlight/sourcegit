@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,13 @@ namespace SourceGit.Views
         }
 
         private bool _useHorizontal = false;
+    }
+
+    internal static class Columns
+    {
+        public const int Subject = 0;
+        public const int Changes = 1;
+        public const int Author = 2;
     }
 
     public class HistoriesCommitList : DataGrid
@@ -464,8 +472,30 @@ namespace SourceGit.Views
         {
             base.OnDataContextChanged(e);
 
-            if (DataContext is ViewModels.Histories vm)
-                CommitListContainer.Columns[1].Width = new(vm.AuthorColumnWidth, DataGridLengthUnitType.Pixel);
+            if (_histories != null)
+                _histories.PropertyChanged -= OnHistoriesPropertyChanged;
+
+            _histories = DataContext as ViewModels.Histories;
+            if (_histories == null)
+                return;
+
+            _histories.PropertyChanged += OnHistoriesPropertyChanged;
+            CommitListContainer.Columns[Columns.Author].Width = new(_histories.AuthorColumnWidth, DataGridLengthUnitType.Pixel);
+            ApplyChangesStatColumnWidth();
+        }
+
+        private void OnHistoriesPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName is nameof(ViewModels.Histories.ChangesStatColumnMinWidth) or nameof(ViewModels.Histories.Commits))
+                ApplyChangesStatColumnWidth();
+        }
+
+        private void ApplyChangesStatColumnWidth()
+        {
+            if (_histories == null || CommitListContainer.Columns.Count <= Columns.Changes)
+                return;
+
+            CommitListContainer.Columns[Columns.Changes].MinWidth = _histories.ChangesStatColumnMinWidth;
         }
 
         private void OnCommitListHeaderPointerMoved(object sender, PointerEventArgs e)
@@ -479,16 +509,16 @@ namespace SourceGit.Views
             var pos = e.GetPosition(border);
             if (_resizingAuthorColumn)
             {
-                var posX = CommitListContainer.Columns[0].ActualWidth;
-                var maxW = posX + CommitListContainer.Columns[1].ActualWidth - 100;
+                var posX = CommitListContainer.Columns[Columns.Subject].ActualWidth;
+                var maxW = posX + CommitListContainer.Columns[Columns.Author].ActualWidth - 100;
                 var delta = posX - pos.X;
                 var w = Math.Max(Math.Min(vm.AuthorColumnWidth + delta, maxW), 80);
-                CommitListContainer.Columns[1].Width = new(w, DataGridLengthUnitType.Pixel);
+                CommitListContainer.Columns[Columns.Author].Width = new(w, DataGridLengthUnitType.Pixel);
                 vm.AuthorColumnWidth = w;
             }
             else
             {
-                var dis = CommitListContainer.Columns[0].ActualWidth - 4 - pos.X;
+                var dis = CommitListContainer.Columns[Columns.Subject].ActualWidth - 4 - pos.X;
                 if (dis < 4 && dis > -4)
                 {
                     if (border.Cursor != _resizingCursor)
@@ -507,7 +537,7 @@ namespace SourceGit.Views
                 return;
 
             var pos = e.GetPosition(border);
-            var dis = CommitListContainer.Columns[0].ActualWidth - 4 - pos.X;
+            var dis = CommitListContainer.Columns[Columns.Subject].ActualWidth - 4 - pos.X;
             if (dis > 4 || dis < -4)
                 return;
 
@@ -1970,6 +2000,7 @@ namespace SourceGit.Views
         private AvaloniaList<Models.IssueTracker> _issueTrackers = null;
         private bool _isScrollToTopVisible = false;
         private bool _isDetailsPanelExpanded = true;
+        private ViewModels.Histories _histories = null;
         private bool _resizingAuthorColumn = false;
         private Cursor _resizingCursor = new(StandardCursorType.SizeWestEast);
     }

@@ -155,7 +155,7 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
 
-          <DataGridTemplateColumn MinWidth="150" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
+          <DataGridTemplateColumn MinWidth="96" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
             <DataGridTemplateColumn.Header>
               <TextBlock Classes="table_header" Text="{DynamicResource Text.Histories.Header.Changes}" HorizontalAlignment="Center"/>
             </DataGridTemplateColumn.Header>
@@ -163,7 +163,9 @@
             <DataGridTemplateColumn.CellTemplate>
               <DataTemplate DataType="m:Commit">
                 <Border Padding="8,0,3,0" Background="Transparent" ClipToBounds="True" IsVisible="{Binding HasChangesStat, Mode=OneWay}">
-                  <TextBlock FontFeatures="+tnum"
+                  <TextBlock FontFamily="{DynamicResource Fonts.Default}"
+                             FontSize="{Binding Source={x:Static vm:Preferences.Instance}, Path=DefaultFontSize, Mode=OneWay}"
+                             FontFeatures="+tnum"
                              VerticalAlignment="Center"
                              Opacity="{Binding IsMerged, Converter={x:Static c:BoolConverters.IsMergedToOpacity}}">
                     <Run Text="{Binding ChangesCount, Mode=OneWay}" FontWeight="Bold" Foreground="{DynamicResource Brush.FG1}"/>
