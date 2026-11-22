@@ -155,6 +155,29 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
 
+          <DataGridTemplateColumn MinWidth="88" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
+            <DataGridTemplateColumn.Header>
+              <TextBlock Classes="table_header" Text="{DynamicResource Text.Histories.Header.Changes}" HorizontalAlignment="Center"/>
+            </DataGridTemplateColumn.Header>
+
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate DataType="m:Commit">
+                <Border Padding="8,0,3,0" Background="Transparent" ClipToBounds="True" IsVisible="{Binding HasChangesStat, Mode=OneWay}">
+                  <TextBlock FontFeatures="+tnum"
+                             VerticalAlignment="Center"
+                             Opacity="{Binding IsMerged, Converter={x:Static c:BoolConverters.IsMergedToOpacity}}">
+                    <Run Text="{Binding ChangesCount, Mode=OneWay}" FontWeight="Bold" Foreground="{DynamicResource Brush.FG1}"/>
+                    <Run Text=" " Foreground="{DynamicResource Brush.FG2}"/>
+                    <Run Text="{DynamicResource Text.Histories.Changes.Unit}" Foreground="{DynamicResource Brush.FG2}"/>
+                    <Run Text="   " Foreground="{DynamicResource Brush.FG2}"/>
+                    <Run Text="{Binding InsertionsText, Mode=OneWay}" Foreground="{DynamicResource Brush.Stats.Added}"/>
+                    <Run Text=" " Foreground="{DynamicResource Brush.FG2}"/>
+                    <Run Text="{Binding DeletionsText, Mode=OneWay}" Foreground="{DynamicResource Brush.Stats.Deleted}"/>
+                  </TextBlock>
+                </Border>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
           <DataGridTemplateColumn MinWidth="80" IsReadOnly="True" IsVisible="{Binding IsAuthorColumnVisible, Mode=OneWay}">
             <DataGridTemplateColumn.Header>
               <TextBlock Classes="table_header" Text="{DynamicResource Text.Histories.Header.Author}" HorizontalAlignment="Center"/>
@@ -240,29 +263,6 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
 
-          <DataGridTemplateColumn MinWidth="88" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
-            <DataGridTemplateColumn.Header>
-              <TextBlock Classes="table_header" Text="{DynamicResource Text.Histories.Header.Changes}" HorizontalAlignment="Center"/>
-            </DataGridTemplateColumn.Header>
-
-            <DataGridTemplateColumn.CellTemplate>
-              <DataTemplate DataType="m:Commit">
-                <Border Padding="8,0,3,0" Background="Transparent" ClipToBounds="True" IsVisible="{Binding HasChangesStat, Mode=OneWay}">
-                  <TextBlock FontFeatures="+tnum"
-                             VerticalAlignment="Center"
-                             Opacity="{Binding IsMerged, Converter={x:Static c:BoolConverters.IsMergedToOpacity}}">
-                    <Run Text="{Binding ChangesCount, Mode=OneWay}" FontWeight="Bold" Foreground="{DynamicResource Brush.FG1}"/>
-                    <Run Text=" " Foreground="{DynamicResource Brush.FG2}"/>
-                    <Run Text="{DynamicResource Text.Histories.Changes.Unit}" Foreground="{DynamicResource Brush.FG2}"/>
-                    <Run Text="   " Foreground="{DynamicResource Brush.FG2}"/>
-                    <Run Text="{Binding InsertionsText, Mode=OneWay}" Foreground="{DynamicResource Brush.Stats.Added}"/>
-                    <Run Text=" " Foreground="{DynamicResource Brush.FG2}"/>
-                    <Run Text="{Binding DeletionsText, Mode=OneWay}" Foreground="{DynamicResource Brush.Stats.Deleted}"/>
-                  </TextBlock>
-                </Border>
-              </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-          </DataGridTemplateColumn>
         </DataGrid.Columns>
       </v:HistoriesCommitList>
       <Border Background="Transparent"

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SourceGit.ViewModels
@@ -191,6 +193,56 @@ namespace SourceGit.ViewModels
             get => string.IsNullOrEmpty(_filter) ? $"({_staged.Count})" : $"({_visibleStaged.Count}/{_staged.Count})";
         }
 
+        /// <summary>
+        ///     Total insertions of the unstaged changes. Untracked files (which has no diff) are excluded.
+        /// </summary>
+        public int UnstagedInsertions
+        {
+            get => _unstagedInsertions;
+            private set
+            {
+                if (SetProperty(ref _unstagedInsertions, value))
+                    OnPropertyChanged(nameof(UnstagedInsertionsText));
+            }
+        }
+
+        public int UnstagedDeletions
+        {
+            get => _unstagedDeletions;
+            private set
+            {
+                if (SetProperty(ref _unstagedDeletions, value))
+                    OnPropertyChanged(nameof(UnstagedDeletionsText));
+            }
+        }
+
+        public int StagedInsertions
+        {
+            get => _stagedInsertions;
+            private set
+            {
+                if (SetProperty(ref _stagedInsertions, value))
+                    OnPropertyChanged(nameof(StagedInsertionsText));
+            }
+        }
+
+        public int StagedDeletions
+        {
+            get => _stagedDeletions;
+            private set
+            {
+                if (SetProperty(ref _stagedDeletions, value))
+                    OnPropertyChanged(nameof(StagedDeletionsText));
+            }
+        }
+
+        public string UnstagedInsertionsText => $"+{_unstagedInsertions}";
+        public string UnstagedDeletionsText => $"-{_unstagedDeletions}";
+        public string StagedInsertionsText => $"+{_stagedInsertions}";
+        public string StagedDeletionsText => $"-{_stagedDeletions}";
+        public bool HasUnstagedStat => _unstagedInsertions > 0 || _unstagedDeletions > 0;
+        public bool HasStagedStat => _stagedInsertions > 0 || _stagedDeletions > 0;
+
         public ChangeSelection SelectedUnstaged
         {
             get => _selectedUnstaged;
@@ -286,6 +338,9 @@ namespace SourceGit.ViewModels
                 HasUnsolvedConflicts = _cached.Find(x => x.IsConflicted) != null;
                 UpdateInProgressState();
                 UpdateDetail();
+
+                // The content of the changed files may have been modified without changing the list itself.
+                RefreshChangesLineStat();
                 return;
             }
 
@@ -364,6 +419,7 @@ namespace SourceGit.ViewModels
 
             UpdateInProgressState();
             UpdateDetail();
+            RefreshChangesLineStat();
         }
 
         public async Task StageChangesAsync(List<Models.Change> changes, Models.Change next)
@@ -881,6 +937,33 @@ namespace SourceGit.ViewModels
                 DetailContext = new DiffContext(_repo.FullPath, new Models.DiffOption(change, isUnstaged), _detailContext as DiffContext);
         }
 
+        private void RefreshChangesLineStat()
+        {
+            var version = ++_statVersion;
+            var repo = _repo.FullPath;
+
+            Task.Run(async () =>
+            {
+                var unstaged = await new Commands.QueryChangesLineStat(repo, false).GetResultAsync().ConfigureAwait(false);
+                var staged = await new Commands.QueryChangesLineStat(repo, true).GetResultAsync().ConfigureAwait(false);
+
+                Dispatcher.UIThread.Post(() =>
+                {
+                    // A newer refresh has been queued. Discard this result.
+                    if (version != _statVersion)
+                        return;
+
+                    UnstagedInsertions = unstaged.Insertions;
+                    UnstagedDeletions = unstaged.Deletions;
+                    StagedInsertions = staged.Insertions;
+                    StagedDeletions = staged.Deletions;
+
+                    OnPropertyChanged(nameof(HasUnstagedStat));
+                    OnPropertyChanged(nameof(HasStagedStat));
+                });
+            });
+        }
+
         private bool IsChanged(List<Models.Change> old, List<Models.Change> cur)
         {
             if (old.Count != cur.Count)
@@ -959,6 +1042,11 @@ namespace SourceGit.ViewModels
 
         private Repository _repo = null;
         private bool _isLoadingData = false;
+        private int _statVersion = 0;
+        private int _unstagedInsertions = 0;
+        private int _unstagedDeletions = 0;
+        private int _stagedInsertions = 0;
+        private int _stagedDeletions = 0;
         private bool _isStaging = false;
         private bool _isUnstaging = false;
         private bool _isCommitting = false;
