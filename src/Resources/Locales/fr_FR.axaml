@@ -474,8 +474,10 @@
   <x:String x:Key="Text.GitLFS.Track" xml:space="preserve">Suivre les fichiers appelés '{0}'</x:String>
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">Suivre tous les fichiers *{0}</x:String>
   <x:String x:Key="Text.GotoRevisionSelector" xml:space="preserve">Sélectionner un commit</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">fichiers</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">AUTEUR</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">HEURE DE L'AUTEUR</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">MODIFICATIONS</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">HEURE DE COMMIT</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">GRAPHE &amp; SUJET</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">SHA</x:String>
@@ -645,6 +647,7 @@
   <x:String x:Key="Text.Preferences.General.Locale" xml:space="preserve">Language</x:String>
   <x:String x:Key="Text.Preferences.General.MaxHistoryCommits" xml:space="preserve">Historique de commits</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesPageByDefault" xml:space="preserve">Afficher la page 'CHANGEMENTS LOCAUX' par défaut</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">Afficher les statistiques de modification dans la liste des commits</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesTabInCommitDetailByDefault" xml:space="preserve">Afficher l'onglet 'CHANGEMENTS' dans les détails du commit par défaut</x:String>
   <x:String x:Key="Text.Preferences.General.ShowRelativeTimeInGraph" xml:space="preserve">Afficher le temps relatif dans le graphe de commits</x:String>
   <x:String x:Key="Text.Preferences.General.ShowTagsInGraph" xml:space="preserve">Afficher les tags dans le graphique des commits</x:String>

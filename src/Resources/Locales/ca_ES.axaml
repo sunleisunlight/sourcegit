@@ -519,8 +519,10 @@
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">Segueix tots els fitxers *{0}</x:String>
   <x:String x:Key="Text.GotoRevisionSelector" xml:space="preserve">Selecciona una comissió</x:String>
   <x:String x:Key="Text.Histories.AdvancedOptions" xml:space="preserve">Opcions avançades</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">fitxers</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">AUTOR</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">DATA DE L'AUTOR</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">CANVIS</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">DATA DE LA COMISSIÓ</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">GRAF I ASSUMPTE</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">SHA</x:String>
@@ -703,6 +705,7 @@
   <x:String x:Key="Text.Preferences.General.Locale" xml:space="preserve">Idioma</x:String>
   <x:String x:Key="Text.Preferences.General.MaxHistoryCommits" xml:space="preserve">Comissions de l'historial</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesPageByDefault" xml:space="preserve">Mostra la pàgina `CANVIS LOCALS` per defecte</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">Mostra les estadístiques de canvis a la llista de commits</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesTabInCommitDetailByDefault" xml:space="preserve">Mostra la pestanya `CANVIS` al detall de la comissió per defecte</x:String>
   <x:String x:Key="Text.Preferences.General.ShowRelativeTimeInGraph" xml:space="preserve">Mostra el temps relatiu al graf de comissions</x:String>
   <x:String x:Key="Text.Preferences.General.ShowTagsInGraph" xml:space="preserve">Mostra les etiquetes al graf de comissions</x:String>

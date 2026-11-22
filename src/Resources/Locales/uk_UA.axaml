@@ -311,8 +311,10 @@
   <x:String x:Key="Text.GitLFS.Remote" xml:space="preserve">Віддалений:</x:String>
   <x:String x:Key="Text.GitLFS.Track" xml:space="preserve">Відстежувати файли, названі '{0}'</x:String>
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">Відстежувати всі *{0} файли</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">файлів</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">АВТОР</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">ЧАС АВТОРА</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">ЗМІНИ</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">ЧАС КОМІТУ</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">ГРАФ ТА ТЕМА</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">SHA</x:String>
@@ -661,4 +663,5 @@
   <x:String x:Key="Text.Worktree.Lock" xml:space="preserve">Заблокувати</x:String>
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">Видалити</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">Розблокувати</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">Показувати статистику змін у списку коммітів</x:String>
 </ResourceDictionary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Avalonia.Collections;
@@ -103,6 +104,22 @@ namespace SourceGit.ViewModels
                 {
                     _repo.UIStates.IsCommitTimeColumnVisibleInHistory = value;
                     OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsChangesStatColumnVisible
+        {
+            get => Preferences.Instance.ShowChangesStatInHistories;
+            set
+            {
+                if (Preferences.Instance.ShowChangesStatInHistories != value)
+                {
+                    Preferences.Instance.ShowChangesStatInHistories = value;
+                    OnPropertyChanged();
+
+                    if (value)
+                        _repo.RefreshCommits();
                 }
             }
         }
@@ -494,6 +511,51 @@ namespace SourceGit.ViewModels
             DetailContext = new RevisionCompare(_repo, commit, null);
         }
 
+        public void LoadCommitChangesStat(string limits, CancellationToken token)
+        {
+            if (_commits.Count == 0 || !Preferences.Instance.ShowChangesStatInHistories)
+                return;
+
+            var commits = new Dictionary<string, Models.Commit>(_commits.Count);
+            foreach (var c in _commits)
+                commits[c.SHA] = c;
+
+            var max = Math.Min(_commits.Count, MaxCommitsWithChangesStat);
+
+            Task.Run(async () =>
+            {
+                var pending = new List<(Models.Commit Commit, int Files, int Insertions, int Deletions)>(256);
+
+                void Flush()
+                {
+                    if (pending.Count == 0)
+                        return;
+
+                    var batch = pending.ToArray();
+                    pending.Clear();
+                    Dispatcher.UIThread.Post(() =>
+                    {
+                        foreach (var (commit, files, insertions, deletions) in batch)
+                            commit.SetChangesStat(files, insertions, deletions);
+                    });
+                }
+
+                await new Commands.QueryCommitChangesStat(_repo.FullPath, limits)
+                    .RunAsync((sha, files, insertions, deletions) =>
+                    {
+                        if (commits.TryGetValue(sha, out var commit))
+                        {
+                            pending.Add((commit, files, insertions, deletions));
+                            if (pending.Count >= 128)
+                                Flush();
+                        }
+                    }, max, token)
+                    .ConfigureAwait(false);
+
+                Flush();
+            }, token);
+        }
+
         private void PostCommitsChanged()
         {
             if (_selectedCommits.Count == 0)
@@ -581,6 +643,8 @@ namespace SourceGit.ViewModels
 
             Graph = Models.CommitGraph.Generate(commits, firstParentOnly, highlighting, extraHeads);
         }
+
+        private const int MaxCommitsWithChangesStat = 5000;
 
         private Repository _repo = null;
         private Models.Branch _currentBranch = null;

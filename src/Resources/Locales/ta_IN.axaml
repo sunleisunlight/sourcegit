@@ -307,8 +307,10 @@
   <x:String x:Key="Text.GitLFS.Remote" xml:space="preserve">தொலை:</x:String>
   <x:String x:Key="Text.GitLFS.Track" xml:space="preserve">'{0}' என பெயரிடப்பட்ட கோப்புகளைக் கண்காணி</x:String>
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">அனைத்து *{0} கோப்புகளையும் கண்காணி</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">கோப்புகள்</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">ஆசிரியர்</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">ஆசிரியர் நேரம்</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">மாற்றங்கள்</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">உறுதிமொழி நேரம்</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">வரைபடம் &amp; பொருள்</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">பாகொவ</x:String>
@@ -653,4 +655,5 @@
   <x:String x:Key="Text.Worktree.Lock" xml:space="preserve">பூட்டு</x:String>
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">நீக்கு</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">திற</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">தரவு நிரலில் கோப்பு மாற்றங்களின் புள்ளிவிவரங்களைக் காட்டு</x:String>
 </ResourceDictionary>

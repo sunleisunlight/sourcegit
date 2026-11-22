@@ -205,6 +205,12 @@ namespace SourceGit.ViewModels
             set => SetProperty(ref _showTagsInGraph, value);
         }
 
+        public bool ShowChangesStatInHistories
+        {
+            get => _showChangesStatInHistories;
+            set => SetProperty(ref _showChangesStatInHistories, value);
+        }
+
         public bool UseCompactBranchNamesInGraph
         {
             get => _useCompactBranchNamesInGraph;
@@ -812,6 +818,7 @@ namespace SourceGit.ViewModels
         private string _ignoreUpdateTag = string.Empty;
 
         private bool _showTagsInGraph = true;
+        private bool _showChangesStatInHistories = true;
         private bool _useTwoColumnsLayoutInHistories = false;
         private bool _displayTimeAsPeriodInHistories = false;
         private bool _useSideBySideDiff = false;

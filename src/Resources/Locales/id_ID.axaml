@@ -501,8 +501,10 @@
   <x:String x:Key="Text.GitLFS.Track" xml:space="preserve">Track berkas bernama '{0}'</x:String>
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">Track semua berkas *{0}</x:String>
   <x:String x:Key="Text.GotoRevisionSelector" xml:space="preserve">Pilih Commit</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">berkas</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">AUTHOR</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">WAKTU AUTHOR</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">PERUBAHAN</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">WAKTU COMMIT</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">GRAFIK &amp; SUBJEK</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">SHA</x:String>
@@ -678,6 +680,7 @@
   <x:String x:Key="Text.Preferences.General.Locale" xml:space="preserve">Bahasa</x:String>
   <x:String x:Key="Text.Preferences.General.MaxHistoryCommits" xml:space="preserve">Commit Riwayat</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesPageByDefault" xml:space="preserve">Tampilkan halaman `LOCAL CHANGES` secara default</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">Tampilkan statistik perubahan berkas di daftar commit</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesTabInCommitDetailByDefault" xml:space="preserve">Tampilkan tab `CHANGES` di detail commit secara default</x:String>
   <x:String x:Key="Text.Preferences.General.ShowRelativeTimeInGraph" xml:space="preserve">Tampilkan waktu relatif pada grafik commit</x:String>
   <x:String x:Key="Text.Preferences.General.ShowTagsInGraph" xml:space="preserve">Tampilkan tag di grafik commit</x:String>

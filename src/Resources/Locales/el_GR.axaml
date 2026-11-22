@@ -501,8 +501,10 @@
   <x:String x:Key="Text.GitLFS.Track" xml:space="preserve">Παρακολούθηση αρχείων με όνομα '{0}'</x:String>
   <x:String x:Key="Text.GitLFS.TrackByExtension" xml:space="preserve">Παρακολούθηση όλων των αρχείων *{0}</x:String>
   <x:String x:Key="Text.GotoRevisionSelector" xml:space="preserve">Επιλογή commit</x:String>
+  <x:String x:Key="Text.Histories.Changes.Unit" xml:space="preserve">αρχεία</x:String>
   <x:String x:Key="Text.Histories.Header.Author" xml:space="preserve">ΣΥΓΓΡΑΦΕΑΣ</x:String>
   <x:String x:Key="Text.Histories.Header.AuthorTime" xml:space="preserve">ΩΡΑ ΣΥΓΓΡΑΦΕΑ</x:String>
+  <x:String x:Key="Text.Histories.Header.Changes" xml:space="preserve">ΑΛΛΑΓΕΣ</x:String>
   <x:String x:Key="Text.Histories.Header.CommitTime" xml:space="preserve">ΩΡΑ COMMIT</x:String>
   <x:String x:Key="Text.Histories.Header.GraphAndSubject" xml:space="preserve">ΓΡΑΦΗΜΑ &amp; ΘΕΜΑ</x:String>
   <x:String x:Key="Text.Histories.Header.SHA" xml:space="preserve">SHA</x:String>
@@ -676,6 +678,7 @@
   <x:String x:Key="Text.Preferences.General.Locale" xml:space="preserve">Γλώσσα</x:String>
   <x:String x:Key="Text.Preferences.General.MaxHistoryCommits" xml:space="preserve">Commits ιστορικού</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesPageByDefault" xml:space="preserve">Εμφάνιση της σελίδας `ΤΟΠΙΚΕΣ ΑΛΛΑΓΕΣ` από προεπιλογή</x:String>
+  <x:String x:Key="Text.Preferences.General.ShowChangesStatInHistories" xml:space="preserve">Εμφάνιση στατιστικών αλλαγών στη λίστα commits</x:String>
   <x:String x:Key="Text.Preferences.General.ShowChangesTabInCommitDetailByDefault" xml:space="preserve">Εμφάνιση της καρτέλας `ΑΛΛΑΓΕΣ` στις λεπτομέρειες commit από προεπιλογή</x:String>
   <x:String x:Key="Text.Preferences.General.ShowRelativeTimeInGraph" xml:space="preserve">Εμφάνιση σχετικού χρόνου στο γράφημα commit</x:String>
   <x:String x:Key="Text.Preferences.General.ShowTagsInGraph" xml:space="preserve">Εμφάνιση ετικετών στο γράφημα commit</x:String>

@@ -34,6 +34,51 @@ namespace SourceGit.Models
             set => SetProperty(ref _isHighlightedInGraph, value);
         }
 
+        /// <summary>
+        ///     Number of changed files. `-1` means the statistics has not been calculated (or is unavailable, like merge commits).
+        /// </summary>
+        public int ChangesCount
+        {
+            get => _changesCount;
+            private set
+            {
+                if (SetProperty(ref _changesCount, value))
+                    OnPropertyChanged(nameof(HasChangesStat));
+            }
+        }
+
+        public int Insertions
+        {
+            get => _insertions;
+            private set
+            {
+                if (SetProperty(ref _insertions, value))
+                    OnPropertyChanged(nameof(InsertionsText));
+            }
+        }
+
+        public int Deletions
+        {
+            get => _deletions;
+            private set
+            {
+                if (SetProperty(ref _deletions, value))
+                    OnPropertyChanged(nameof(DeletionsText));
+            }
+        }
+
+        public bool HasChangesStat => _changesCount >= 0;
+        public bool HasNoChanges => _changesCount == 0;
+        public string InsertionsText => $"+{_insertions}";
+        public string DeletionsText => $"-{_deletions}";
+
+        public void SetChangesStat(int files, int insertions, int deletions)
+        {
+            ChangesCount = files;
+            Insertions = insertions;
+            Deletions = deletions;
+        }
+
         public bool IsCommitterVisible => !Author.Equals(Committer) || AuthorTime != CommitterTime;
         public bool IsCurrentHead => Decorators.Find(x => x.Type is DecoratorType.CurrentBranchHead or DecoratorType.CurrentCommitHead) != null;
         public bool HasDecorators => Decorators.Count > 0;
@@ -126,6 +171,9 @@ namespace SourceGit.Models
         }
 
         private bool _isHighlightedInGraph = false;
+        private int _changesCount = -1;
+        private int _insertions = 0;
+        private int _deletions = 0;
     }
 
     public class CommitFullMessage

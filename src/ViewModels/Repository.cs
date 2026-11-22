@@ -1303,6 +1303,9 @@ namespace SourceGit.ViewModels
                         _histories.Commits = commits;
                         BisectState = _histories.UpdateBisectInfo();
 
+                        // Statistics are calculated in the background, so that showing the commit list is never blocked.
+                        _histories.LoadCommitChangesStat(builder.ToString(), token);
+
                         if (!string.IsNullOrEmpty(_navigateToCommitDelayed))
                             NavigateToCommit(_navigateToCommitDelayed);
                     }
