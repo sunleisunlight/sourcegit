@@ -61,7 +61,7 @@ namespace SourceGit.Views
             }
             catch (Exception exception)
             {
-                Models.Notification.Send(null, $"Failed to select parent folder: {exception.Message}", true);
+                Models.Notification.Send(null, App.Text("Notification.SelectParentFolderFailed", exception.Message), true);
             }
 
             e.Handled = true;

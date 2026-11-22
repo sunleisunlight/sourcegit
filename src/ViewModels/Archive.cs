@@ -59,7 +59,7 @@ namespace SourceGit.ViewModels
             log.Complete();
 
             if (succ)
-                _repo.SendNotification($"Save archive to : {_saveFile}");
+                _repo.SendNotification(App.Text("Notification.SaveArchiveTo", _saveFile));
             return succ;
         }
 

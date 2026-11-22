@@ -464,7 +464,7 @@ namespace SourceGit.ViewModels
             }
             catch (Exception ex)
             {
-                SendNotification($"Failed to start watcher for repository: '{FullPath}'. You may need to press 'F5' to refresh repository manually!\n\nReason: {ex.Message}", true);
+                SendNotification(App.Text("Notification.StartWatcherFailed", FullPath, ex.Message), true);
             }
 
             _historyFilterMode = _uiStates.GetHistoryFilterMode();
@@ -578,7 +578,7 @@ namespace SourceGit.ViewModels
             var log = CreateLog("Install LFS");
             var succ = await new Commands.LFS(FullPath).Use(log).InstallAsync();
             if (succ)
-                SendNotification("LFS enabled successfully!");
+                SendNotification(App.Text("Notification.LFSEnabled"));
 
             log.Complete();
         }
@@ -591,7 +591,7 @@ namespace SourceGit.ViewModels
                 .TrackAsync(pattern, isFilenameMode);
 
             if (succ)
-                SendNotification($"Tracking successfully! Pattern: {pattern}");
+                SendNotification(App.Text("Notification.LFSTrackingAdded", pattern));
 
             log.Complete();
             return succ;
@@ -605,7 +605,7 @@ namespace SourceGit.ViewModels
                 .LockAsync(remote, path);
 
             if (succ)
-                SendNotification($"Lock file successfully! File: {path}");
+                SendNotification(App.Text("Notification.LFSFileLocked", path));
 
             log.Complete();
             return succ;
@@ -619,7 +619,7 @@ namespace SourceGit.ViewModels
                 .UnlockAsync(remote, path, force);
 
             if (succ && notify)
-                SendNotification($"Unlock file successfully! File: {path}");
+                SendNotification(App.Text("Notification.LFSFileUnlocked", path));
 
             log.Complete();
             return succ;
@@ -678,7 +678,7 @@ namespace SourceGit.ViewModels
 
             if (_remotes.Count == 0)
             {
-                SendNotification("No remotes added to this repository!!!", true);
+                SendNotification(App.Text("Notification.NoRemotes"), true);
                 return;
             }
 
@@ -695,13 +695,13 @@ namespace SourceGit.ViewModels
 
             if (_remotes.Count == 0)
             {
-                SendNotification("No remotes added to this repository!!!", true);
+                SendNotification(App.Text("Notification.NoRemotes"), true);
                 return;
             }
 
             if (_currentBranch == null)
             {
-                SendNotification("Can NOT find current branch!!!", true);
+                SendNotification(App.Text("Notification.NoCurrentBranch"), true);
                 return;
             }
 
@@ -719,13 +719,13 @@ namespace SourceGit.ViewModels
 
             if (_remotes.Count == 0)
             {
-                SendNotification("No remotes added to this repository!!!", true);
+                SendNotification(App.Text("Notification.NoRemotes"), true);
                 return;
             }
 
             if (_currentBranch == null)
             {
-                SendNotification("Can NOT find current branch!!!", true);
+                SendNotification(App.Text("Notification.NoCurrentBranch"), true);
                 return;
             }
 
@@ -1436,7 +1436,7 @@ namespace SourceGit.ViewModels
         {
             if (_currentBranch == null)
             {
-                SendNotification("Git cannot create a branch before your first commit.", true);
+                SendNotification(App.Text("Notification.CannotCreateBranchBeforeCommit"), true);
                 return;
             }
 
@@ -1520,7 +1520,7 @@ namespace SourceGit.ViewModels
         {
             if (_currentBranch == null)
             {
-                SendNotification("Git cannot create a tag before your first commit.", true);
+                SendNotification(App.Text("Notification.CannotCreateTagBeforeCommit"), true);
                 return;
             }
 

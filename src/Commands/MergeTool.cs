@@ -17,7 +17,7 @@ namespace SourceGit.Commands
             var tool = Native.OS.GetDiffMergeTool(false);
             if (tool == null)
             {
-                RaiseException("Invalid diff/merge tool in preference setting!");
+                RaiseException(App.Text("Notification.InvalidDiffMergeTool"));
                 return false;
             }
 
@@ -46,14 +46,14 @@ namespace SourceGit.Commands
 
             if (string.IsNullOrEmpty(tool))
             {
-                RaiseException("Missing git configuration: merge.guitool");
+                RaiseException(App.Text("Notification.MissingMergeToolConfig"));
                 return false;
             }
 
             if (tool.StartsWith("vimdiff", StringComparison.Ordinal) ||
                 tool.StartsWith("nvimdiff", StringComparison.Ordinal))
             {
-                RaiseException($"CLI based merge tool \"{tool}\" is not supported by this app!");
+                RaiseException(App.Text("Notification.CliToolNotSupported", tool));
                 return false;
             }
 

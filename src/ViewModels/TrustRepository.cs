@@ -61,7 +61,7 @@ namespace SourceGit.ViewModels
                 if (!test.IsSuccess || string.IsNullOrWhiteSpace(test.StdOut))
                 {
                     log.Complete();
-                    Models.Notification.Send(_pageId, string.IsNullOrWhiteSpace(test.StdErr) ? "Failed to open the repository after trusting it." : test.StdErr, true);
+                    Models.Notification.Send(_pageId, string.IsNullOrWhiteSpace(test.StdErr) ? App.Text("Notification.FailedToOpenAfterTrust") : test.StdErr, true);
                     return false;
                 }
 

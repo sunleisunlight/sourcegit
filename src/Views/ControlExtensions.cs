@@ -37,7 +37,7 @@ namespace SourceGit.Views
             }
             catch (Exception e)
             {
-                await new Alert().ShowAsync(topLevel, "Failed to copy text to clipboard: " + e.Message, true);
+                await new Alert().ShowAsync(topLevel, App.Text("Notification.CopyToClipboardFailed", e.Message), true);
             }
         }
 

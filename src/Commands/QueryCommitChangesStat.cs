@@ -40,7 +40,7 @@ namespace SourceGit.Commands
             }
             catch (Exception e)
             {
-                RaiseException($"Failed to query changes statistics. Reason: {e.Message}");
+                RaiseException(App.Text("Notification.QueryChangesStatFailed", e.Message));
                 return;
             }
 
@@ -126,7 +126,7 @@ namespace SourceGit.Commands
             catch (Exception e)
             {
                 if (!token.IsCancellationRequested)
-                    RaiseException($"Failed to query changes statistics. Reason: {e.Message}");
+                    RaiseException(App.Text("Notification.QueryChangesStatFailed", e.Message));
             }
             finally
             {

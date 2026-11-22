@@ -614,6 +614,119 @@
   <x:String x:Key="Text.Name" xml:space="preserve">Nama:</x:String>
   <x:String x:Key="Text.No" xml:space="preserve">TIDAK</x:String>
   <x:String x:Key="Text.NotConfigured" xml:space="preserve">Git BELUM dikonfigurasi. Silakan ke [Preferences] dan konfigurasikan terlebih dahulu.</x:String>
+  <x:String x:Key="Text.GitError.DetailKept" xml:space="preserve">Git reported the following error (part of it cannot be translated automatically):</x:String>
+  <x:String x:Key="Text.GitError.NoTrackingInfo" xml:space="preserve">There is no tracking information for the current branch.</x:String>
+  <x:String x:Key="Text.GitError.UnrelatedHistories" xml:space="preserve">Refusing to merge unrelated histories.</x:String>
+  <x:String x:Key="Text.GitError.Diverged" xml:space="preserve">Your branch and '{0}' have diverged.</x:String>
+  <x:String x:Key="Text.GitError.RemotePermissionDenied" xml:space="preserve">Remote permission denied: {0} denied to {1}.</x:String>
+  <x:String x:Key="Text.GitError.CheckAccess" xml:space="preserve">Please make sure you have the correct access rights and the repository exists.</x:String>
+  <x:String x:Key="Text.GitError.CouldNotReadRemote" xml:space="preserve">Could not read from remote repository.</x:String>
+  <x:String x:Key="Text.GitError.NotARepoPath" xml:space="preserve">'{0}' does not appear to be a git repository</x:String>
+  <x:String x:Key="Text.GitError.Reason.NeedsForce" xml:space="preserve">force push required</x:String>
+  <x:String x:Key="Text.GitError.Reason.RemoteRejected" xml:space="preserve">rejected by the remote</x:String>
+  <x:String x:Key="Text.GitError.Reason.StaleInfo" xml:space="preserve">remote ref information is stale, fetch first</x:String>
+  <x:String x:Key="Text.GitError.Reason.NonFastForward" xml:space="preserve">non-fast-forward, pull first</x:String>
+  <x:String x:Key="Text.GitError.Reason.FetchFirst" xml:space="preserve">the remote has new commits, pull first</x:String>
+  <x:String x:Key="Text.GitError.UnmergedFiles" xml:space="preserve">Committing is not possible because you have unmerged files.</x:String>
+  <x:String x:Key="Text.GitError.NotOnBranch" xml:space="preserve">You are not currently on a branch (detached HEAD).</x:String>
+  <x:String x:Key="Text.GitError.CannotLockRef" xml:space="preserve">Cannot lock ref '{0}'. Another git process may be running.</x:String>
+  <x:String x:Key="Text.GitError.LockFileExists" xml:space="preserve">Lock file '{0}' already exists. Another git process may be running.</x:String>
+  <x:String x:Key="Text.GitError.NoEmailConfigured" xml:space="preserve">Unable to auto-detect email address. Please configure user.email.</x:String>
+  <x:String x:Key="Text.GitError.GpgSignFailed" xml:space="preserve">gpg failed to sign the data. Please check your GPG configuration.</x:String>
+  <x:String x:Key="Text.GitError.BadRevision" xml:space="preserve">Bad revision or object: '{0}'.</x:String>
+  <x:String x:Key="Text.GitError.NotAGitRepository" xml:space="preserve">Not a git repository.</x:String>
+  <x:String x:Key="Text.GitError.PathspecNoMatch" xml:space="preserve">Pathspec '{0}' did not match any file(s) known to git.</x:String>
+  <x:String x:Key="Text.GitError.BranchExists" xml:space="preserve">A branch named '{0}' already exists.</x:String>
+  <x:String x:Key="Text.GitError.NothingToCommit" xml:space="preserve">Nothing to commit, working tree clean.</x:String>
+  <x:String x:Key="Text.GitError.NoUpstream" xml:space="preserve">The current branch '{0}' has no upstream branch.</x:String>
+  <x:String x:Key="Text.GitError.MergeConflict" xml:space="preserve">Merge conflict ({0}): {1}</x:String>
+  <x:String x:Key="Text.GitError.UntrackedOverwritten" xml:space="preserve">The following untracked files would be overwritten. Please handle them first.</x:String>
+  <x:String x:Key="Text.GitError.LocalChangesOverwritten" xml:space="preserve">Your local changes would be overwritten by {0}. Please commit or stash them first.</x:String>
+  <x:String x:Key="Text.GitError.RemoteMessage" xml:space="preserve">Remote: {0}</x:String>
+  <x:String x:Key="Text.GitError.RpcFailed" xml:space="preserve">RPC failed (network or proxy problem).</x:String>
+  <x:String x:Key="Text.GitError.EarlyEOF" xml:space="preserve">Early EOF (network problem).</x:String>
+  <x:String x:Key="Text.GitError.RemoteHungUp" xml:space="preserve">The remote end hung up unexpectedly.</x:String>
+  <x:String x:Key="Text.GitError.CouldNotResolveHost" xml:space="preserve">Could not resolve host. Please check your network or proxy. {0}</x:String>
+  <x:String x:Key="Text.GitError.SshConnectFailed" xml:space="preserve">SSH connection to {0}:{1} failed: {2}</x:String>
+  <x:String x:Key="Text.GitError.CouldNotReadUsername" xml:space="preserve">Could not read username for '{0}': {1}</x:String>
+  <x:String x:Key="Text.GitError.AuthFailed" xml:space="preserve">Authentication failed for '{0}'.</x:String>
+  <x:String x:Key="Text.GitError.UnableToAccess" xml:space="preserve">Unable to access '{0}': {1}</x:String>
+  <x:String x:Key="Text.GitError.HostKeyFailed" xml:space="preserve">Host key verification failed.</x:String>
+  <x:String x:Key="Text.GitError.PermissionDenied" xml:space="preserve">Permission denied ({0})</x:String>
+  <x:String x:Key="Text.GitError.PublicKeyDenied" xml:space="preserve">SSH public key authentication failed. Please check your SSH keys.</x:String>
+  <x:String x:Key="Text.GitError.RepositoryNotFound" xml:space="preserve">Repository '{0}' not found, or you have no permission.</x:String>
+  <x:String x:Key="Text.GitError.RepositoryNotFoundShort" xml:space="preserve">Remote repository not found, or you have no permission.</x:String>
+  <x:String x:Key="Text.GitError.PushRequiresForce" xml:space="preserve">The remote has newer commits. A force push is required.</x:String>
+  <x:String x:Key="Text.GitError.TagExistsOnRemote" xml:space="preserve">The tag already exists in the remote. Push rejected.</x:String>
+  <x:String x:Key="Text.GitError.BranchBehindRemote" xml:space="preserve">The tip of your current branch is behind the remote. Please pull first.</x:String>
+  <x:String x:Key="Text.GitError.RemoteHasNewWork" xml:space="preserve">The remote contains work that you do not have locally. Please pull first.</x:String>
+  <x:String x:Key="Text.GitError.EverythingUpToDate" xml:space="preserve">Everything up-to-date.</x:String>
+  <x:String x:Key="Text.GitError.PushFailedRefs" xml:space="preserve">Failed to push some refs to '{0}'</x:String>
+  <x:String x:Key="Text.GitError.PushRejectedRemote" xml:space="preserve">Remote rejected: {0} -&gt; {1} ({2})</x:String>
+  <x:String x:Key="Text.GitError.PushRejected" xml:space="preserve">Push rejected: {0} -&gt; {1} ({2})</x:String>
+  <x:String x:Key="Text.GitError.PushTarget" xml:space="preserve">Remote: {0}</x:String>
+  <x:String x:Key="Text.GitError.PushingTo" xml:space="preserve">Pushing to: {0}</x:String>
+  <x:String x:Key="Text.Notification.ResetToRevisionSuccess" xml:space="preserve">Reset to selected revision successfully.</x:String>
+  <x:String x:Key="Text.Notification.CopyToClipboardFailed" xml:space="preserve">Failed to copy text to clipboard: {0}</x:String>
+  <x:String x:Key="Text.Notification.CommitNotValidForRebase" xml:space="preserve">Commit '{0}' is not a valid revision for `git rebase -i`!</x:String>
+  <x:String x:Key="Text.Notification.BadOpenAIConfig" xml:space="preserve">Bad configuration for OpenAI</x:String>
+  <x:String x:Key="Text.Notification.NoFilesAddedToCommit" xml:space="preserve">No files added to commit!</x:String>
+  <x:String x:Key="Text.Notification.SelectAtLeastOneLine" xml:space="preserve">You should select at least one changed line!</x:String>
+  <x:String x:Key="Text.Notification.SelectCustomActionFailed" xml:space="preserve">Failed to select executable for custom action: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectMergeToolFailed" xml:space="preserve">Failed to select merge tool: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectShellFailed" xml:space="preserve">Failed to select shell/terminal: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectGpgFailed" xml:space="preserve">Failed to select gpg program: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectGitFailed" xml:space="preserve">Failed to select git executable: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectThemeFileFailed" xml:space="preserve">Failed to select theme override file: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectCloneDirFailed" xml:space="preserve">Failed to select default clone directory: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectScanRootFailed" xml:space="preserve">Failed to select root scanning directory: {0}</x:String>
+  <x:String x:Key="Text.Notification.OpenRepositoryFailed" xml:space="preserve">Failed to open repository: {0}</x:String>
+  <x:String x:Key="Text.Notification.NotAGitRepository" xml:space="preserve">Given path is not a valid git repository!</x:String>
+  <x:String x:Key="Text.Notification.RepositoryPathMissing" xml:space="preserve">Repository path does NOT exist. Please check the path.</x:String>
+  <x:String x:Key="Text.Notification.RepositoryMissing" xml:space="preserve">Repository does NOT exist any more. Please remove it.</x:String>
+  <x:String x:Key="Text.Notification.UnknownOpenError" xml:space="preserve">Unknown error occurred while opening the repository.</x:String>
+  <x:String x:Key="Text.Notification.SelectParentFolderFailed" xml:space="preserve">Failed to select parent folder: {0}</x:String>
+  <x:String x:Key="Text.Notification.SelectLocationFailed" xml:space="preserve">Failed to select location: {0}</x:String>
+  <x:String x:Key="Text.Notification.BisectRunning" xml:space="preserve">Bisect is running! Please abort it before starting a new one.</x:String>
+  <x:String x:Key="Text.Notification.UncommittedChanges" xml:space="preserve">You have un-committed local changes. Please discard or stash them first.</x:String>
+  <x:String x:Key="Text.Notification.GitFlowInitFailed" xml:space="preserve">Git flow init failed: No branch found!</x:String>
+  <x:String x:Key="Text.Notification.MixedConflictSelection" xml:space="preserve">Selection contains both conflict and non-conflict changes!</x:String>
+  <x:String x:Key="Text.Notification.UnsolvedConflictsForAutoStage" xml:space="preserve">Repository has unsolved conflict(s). Auto-stage and commit is disabled!</x:String>
+  <x:String x:Key="Text.Notification.UnfinishedJob" xml:space="preserve">Repository has an unfinished job! Please wait!</x:String>
+  <x:String x:Key="Text.Notification.NoCommitsToAmend" xml:space="preserve">No commits to amend!</x:String>
+  <x:String x:Key="Text.Notification.CannotCreateTagBeforeCommit" xml:space="preserve">Git cannot create a tag before your first commit.</x:String>
+  <x:String x:Key="Text.Notification.CannotCreateBranchBeforeCommit" xml:space="preserve">Git cannot create a branch before your first commit.</x:String>
+  <x:String x:Key="Text.Notification.NoCurrentBranch" xml:space="preserve">Can NOT find current branch!</x:String>
+  <x:String x:Key="Text.Notification.NoRemotes" xml:space="preserve">No remotes added to this repository!</x:String>
+  <x:String x:Key="Text.Notification.LFSFileUnlocked" xml:space="preserve">Unlock file successfully! File: {0}</x:String>
+  <x:String x:Key="Text.Notification.LFSFileLocked" xml:space="preserve">Lock file successfully! File: {0}</x:String>
+  <x:String x:Key="Text.Notification.LFSTrackingAdded" xml:space="preserve">Tracking successfully! Pattern: {0}</x:String>
+  <x:String x:Key="Text.Notification.LFSEnabled" xml:space="preserve">LFS enabled successfully!</x:String>
+  <x:String x:Key="Text.Notification.StartWatcherFailed" xml:space="preserve">Failed to start watcher for repository: '{0}'. You may need to press 'F5' to refresh repository manually!&amp;#10;&amp;#10;Reason: {1}</x:String>
+  <x:String x:Key="Text.Notification.FailedToOpenAfterTrust" xml:space="preserve">Failed to open the repository after trusting it.</x:String>
+  <x:String x:Key="Text.Notification.MissingScanRoot" xml:space="preserve">Please select the root directory to scan!</x:String>
+  <x:String x:Key="Text.Notification.FolderNotFound" xml:space="preserve">Folder '{0}' can NOT be found!</x:String>
+  <x:String x:Key="Text.Notification.SaveArchiveTo" xml:space="preserve">Archive has been saved to: {0}</x:String>
+  <x:String x:Key="Text.Notification.InvalidPatchInClipboard" xml:space="preserve">There's no valid patch content in clipboard!</x:String>
+  <x:String x:Key="Text.Notification.ClipboardUnavailable" xml:space="preserve">Clipboard service is not available!</x:String>
+  <x:String x:Key="Text.Notification.TerminalNotConfigured" xml:space="preserve">Terminal is not specified! Please confirm that the correct shell/terminal has been configured.</x:String>
+  <x:String x:Key="Text.Notification.BlockedUnsafeURL" xml:space="preserve">Blocked unsafe URL: {0}</x:String>
+  <x:String x:Key="Text.Notification.FailedToOpenPath" xml:space="preserve">Failed to open '{0}'</x:String>
+  <x:String x:Key="Text.Notification.FailedToStartProgram" xml:space="preserve">Failed to start '{0}'. Reason: {1}</x:String>
+  <x:String x:Key="Text.Notification.UpdateIndexFailed" xml:space="preserve">Failed to update index: {0}</x:String>
+  <x:String x:Key="Text.Notification.SaveFileFailed" xml:space="preserve">Failed to save file: {0}</x:String>
+  <x:String x:Key="Text.Notification.SaveChangesAsPatchFailed" xml:space="preserve">Failed to save patch: {0}</x:String>
+  <x:String x:Key="Text.Notification.QueryFileContentFailed" xml:space="preserve">Failed to query file content: {0}</x:String>
+  <x:String x:Key="Text.Notification.DiscardChangesFailed" xml:space="preserve">Failed to discard changes. Reason: {0}</x:String>
+  <x:String x:Key="Text.Notification.BadGitFlowBranchType" xml:space="preserve">Bad git-flow branch type!</x:String>
+  <x:String x:Key="Text.Notification.CliToolNotSupported" xml:space="preserve">CLI based diff/merge tool "{0}" is not supported by this app!</x:String>
+  <x:String x:Key="Text.Notification.MissingMergeToolConfig" xml:space="preserve">Missing git configuration: merge.guitool</x:String>
+  <x:String x:Key="Text.Notification.MissingDiffToolConfig" xml:space="preserve">Missing git configuration: diff.guitool</x:String>
+  <x:String x:Key="Text.Notification.InvalidDiffMergeTool" xml:space="preserve">Invalid diff/merge tool in preference setting!</x:String>
+  <x:String x:Key="Text.Notification.QueryChangesStatFailed" xml:space="preserve">Failed to query changes statistics. Reason: {0}</x:String>
+  <x:String x:Key="Text.Notification.QueryCommitsForRebaseFailed" xml:space="preserve">Failed to query commits for interactive-rebase. Reason: {0}</x:String>
+  <x:String x:Key="Text.Notification.QueryCommitsFailed" xml:space="preserve">Failed to query commits. Reason: {0}</x:String>
+  <x:String x:Key="Text.Notification.CommandFailed" xml:space="preserve">Failed to run a Git command: {0}</x:String>
   <x:String x:Key="Text.Open" xml:space="preserve">Buka</x:String>
   <x:String x:Key="Text.Open.SystemDefaultEditor" xml:space="preserve">Editor Default (Sistem)</x:String>
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">Buka Direktori Penyimpanan Data</x:String>

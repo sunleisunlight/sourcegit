@@ -86,7 +86,7 @@ namespace SourceGit.Views
             if (sender is Button { DataContext: ViewModels.FileHistoriesSingleRevision single })
             {
                 await single.ResetToSelectedRevisionAsync();
-                await new Alert().ShowAsync(this, "Reset to selected revision successfully.", false);
+                await new Alert().ShowAsync(this, App.Text("Notification.ResetToRevisionSuccess"), false);
             }
 
             e.Handled = true;
@@ -109,11 +109,11 @@ namespace SourceGit.Views
 
                     var succ = await compare.SaveAsPatch(storageFile.Path.LocalPath);
                     if (succ)
-                        await new Alert().ShowAsync(this, "Saved as patch successfully.", false);
+                        await new Alert().ShowAsync(this, App.Text("SaveAsPatchSuccess"), false);
                 }
                 catch (Exception exception)
                 {
-                    await new Alert().ShowAsync(this, $"Failed to save as patch: {exception.Message}", true);
+                    await new Alert().ShowAsync(this, App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                 }
 
                 e.Handled = true;

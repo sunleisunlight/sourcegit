@@ -102,14 +102,14 @@ namespace SourceGit.ViewModels
             {
                 if (Clipboard == null)
                 {
-                    _repo.SendNotification("Clipboard service is not available!!!", true);
+                    _repo.SendNotification(App.Text("Notification.ClipboardUnavailable"), true);
                     return false;
                 }
 
                 var content = await Clipboard.TryGetTextAsync();
                 if (string.IsNullOrEmpty(content) || !content.StartsWith("diff --git ", StringComparison.Ordinal))
                 {
-                    _repo.SendNotification("There's no valid patch content in clipboard!!!", true);
+                    _repo.SendNotification(App.Text("Notification.InvalidPatchInClipboard"), true);
                     return false;
                 }
 

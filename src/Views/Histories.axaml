@@ -155,7 +155,7 @@
             </DataGridTemplateColumn.CellTemplate>
           </DataGridTemplateColumn>
 
-          <DataGridTemplateColumn MinWidth="88" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
+          <DataGridTemplateColumn MinWidth="150" IsReadOnly="True" IsVisible="{Binding IsChangesStatColumnVisible, Mode=OneWay}">
             <DataGridTemplateColumn.Header>
               <TextBlock Classes="table_header" Text="{DynamicResource Text.Histories.Header.Changes}" HorizontalAlignment="Center"/>
             </DataGridTemplateColumn.Header>

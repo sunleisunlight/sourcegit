@@ -41,12 +41,12 @@ namespace SourceGit.Views
                             var saveTo = storageFile.Path.LocalPath;
                             var succ = await vm.SaveChangesAsPatchAsync(selection.Changes, saveTo);
                             if (succ)
-                                await new Alert().ShowAsync(this, "Save patch successfully.", false);
+                                await new Alert().ShowAsync(this, App.Text("SaveAsPatchSuccess"), false);
                         }
                     }
                     catch (Exception exception)
                     {
-                        await new Alert().ShowAsync(this, $"Failed to save as patch: {exception.Message}", true);
+                        await new Alert().ShowAsync(this, App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                     }
 
                     e.Handled = true;

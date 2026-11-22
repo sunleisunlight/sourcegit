@@ -463,7 +463,7 @@ namespace SourceGit.Views
                         }
                         catch (Exception exception)
                         {
-                            repo.SendNotification($"Failed to save as patch: {exception.Message}", true);
+                            repo.SendNotification(App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                         }
 
                         e.Handled = true;
@@ -750,7 +750,7 @@ namespace SourceGit.Views
                 {
                     if (hasNonConflicts)
                     {
-                        repo.SendNotification("Selection contains both conflict and non-conflict changes!", true);
+                        repo.SendNotification(App.Text("Notification.MixedConflictSelection"), true);
                         return null;
                     }
 
@@ -870,7 +870,7 @@ namespace SourceGit.Views
                     }
                     catch (Exception exception)
                     {
-                        repo.SendNotification($"Failed to save as patch: {exception.Message}", true);
+                        repo.SendNotification(App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                     }
 
                     e.Handled = true;
@@ -1064,7 +1064,7 @@ namespace SourceGit.Views
                     }
                     catch (Exception exception)
                     {
-                        repo.SendNotification($"Failed to save as patch: {exception.Message}", true);
+                        repo.SendNotification(App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                     }
 
                     e.Handled = true;
@@ -1279,7 +1279,7 @@ namespace SourceGit.Views
                     }
                     catch (Exception exception)
                     {
-                        repo.SendNotification($"Failed to save as patch: {exception.Message}", true);
+                        repo.SendNotification(App.Text("Notification.SaveChangesAsPatchFailed", exception.Message), true);
                     }
 
                     e.Handled = true;

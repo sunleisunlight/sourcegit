@@ -151,7 +151,7 @@ namespace SourceGit.ViewModels
 
             if (!Directory.Exists(path))
             {
-                Models.Notification.Send(_pageId, $"Folder '{path}' can NOT be found", true);
+                Models.Notification.Send(_pageId, App.Text("Notification.FolderNotFound", path), true);
                 return false;
             }
 

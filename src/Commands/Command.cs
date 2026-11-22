@@ -70,7 +70,7 @@ namespace SourceGit.Commands
             catch (Exception e)
             {
                 if (RaiseError)
-                    RaiseException(e.Message);
+                    RaiseException(App.Text("Notification.CommandFailed", e.Message));
 
                 Log?.AppendLine(string.Empty);
                 return false;

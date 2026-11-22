@@ -101,7 +101,7 @@ namespace SourceGit.ViewModels
                         Models.SafeDirectories.TryGetSafeDirectoryValue(repo, test.StdErr, out var safeDirectory))
                         ActivePage.Popup = new TrustRepository(ActivePage.Node.Id, repo, test.StdErr, safeDirectory, null, false, true, 0);
                     else
-                        ActivePage.Popup = new Init(ActivePage.Node.Id, repo, null, 0, test.StdErr ?? "Unknown error occurred while opening the repository.");
+                        ActivePage.Popup = new Init(ActivePage.Node.Id, repo, null, 0, test.StdErr ?? App.Text("Notification.UnknownOpenError"));
 
                     return true;
                 }
@@ -313,7 +313,7 @@ namespace SourceGit.ViewModels
                 ActivePage.Notifications.Add(new Models.Notification
                 {
                     Group = node.Id,
-                    Message = "Repository does NOT exist any more. Please remove it.",
+                    Message = App.Text("Notification.RepositoryMissing"),
                     IsError = true,
                 });
                 return;
@@ -326,7 +326,7 @@ namespace SourceGit.ViewModels
                 ActivePage.Notifications.Add(new Models.Notification
                 {
                     Group = node.Id,
-                    Message = "Given path is not a valid git repository!",
+                    Message = App.Text("Notification.NotAGitRepository"),
                     IsError = true,
                 });
                 return;
@@ -391,7 +391,7 @@ namespace SourceGit.ViewModels
                 ownerPage.Notifications.Add(new Models.Notification
                 {
                     Group = ownerPage.Node.Id,
-                    Message = "Repository path does NOT exist. Please check the path.",
+                    Message = App.Text("Notification.RepositoryPathMissing"),
                     IsError = true,
                 });
 
@@ -405,7 +405,7 @@ namespace SourceGit.ViewModels
                 ownerPage.Notifications.Add(new Models.Notification
                 {
                     Group = ownerPage.Node.Id,
-                    Message = "Given path is not a valid git repository!",
+                    Message = App.Text("Notification.NotAGitRepository"),
                     IsError = true,
                 });
                 return;

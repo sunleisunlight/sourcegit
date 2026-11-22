@@ -182,7 +182,7 @@ namespace SourceGit.Native
             }
             catch (Exception e)
             {
-                Models.Notification.Send(workdir, $"Failed to start '{OS.ShellOrTerminal}'. Reason: {e.Message}", true);
+                Models.Notification.Send(workdir, App.Text("Notification.FailedToStartProgram", OS.ShellOrTerminal, e.Message), true);
             }
         }
 

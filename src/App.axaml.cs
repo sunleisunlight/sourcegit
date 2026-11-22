@@ -100,10 +100,16 @@ namespace SourceGit
             return Models.ConfirmEmptyCommitResult.Cancel;
         }
 
+        /// <summary>
+        ///     Key of the active locale (like `zh_CN`). Used to decide whether the raw messages from git need to be translated.
+        /// </summary>
+        public static string ActiveLocaleKey { get; private set; } = "en_US";
+
         public static void SetLocale(string localeKey)
         {
             var locale = Models.Locale.Supported.Find(x => x.Key.Equals(localeKey, StringComparison.OrdinalIgnoreCase));
             var finalLocaleKey = locale?.Key ?? "en_US";
+            ActiveLocaleKey = finalLocaleKey;
 
             if (Current is not App app ||
                 app.Resources[finalLocaleKey] is not ResourceDictionary targetLocale ||
